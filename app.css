@@ -34,6 +34,7 @@
 
 html, .tui-editor-contents {
 	font-family: 'LotteMartDream', sans-serif !important;
+	text-decoration:none !important;
 }
 
 /* 폰트 */
@@ -186,44 +187,40 @@ body {
 	color: #afffff;
 }
 /* 탑 로고 */
-/* 사이드 바 */
 .side-bar{
   z-index:10;
   width:300px;
   height:100vh;
   position:fixed;
-  right:-270px;
+  right:-265px;
   transition:all 0.3s;
   box-sizing:border-box;
 }
 
-.side-bar:hover {
-	right: -1px;
+.side-bar:hover{
+  right:-1px;
 }
 
-.side-bar>* {
-	color: white;
+.side-bar > * {
+  color:white;
 }
 
-.side-bar__arrows>span:first-child {
-	margin: 5px;
-	margin-right: auto;
-	font-size: 1.5rem;
+.side-bar__arrows > span {
+  margin:5px;
+  font-size:1.5rem;  
+  margin-right:auto;
 }
 
-.side-bar:hover>.side-bar__arrows>span:first-child {
-	display: none;
+.side-bar:hover > .side-bar__arrows > span:first-child {
+  display:none;
 }
 
-.side-bar__arrows>span:nth-child(2) {
-	display: none;
-	margin: 5px;
-	margin-right: auto;
-	font-size: 1.5rem;
+.side-bar__arrows > span:nth-child(2)  {
+  display:none;
 }
 
-.side-bar:hover>.side-bar__arrows>span:nth-child(2) {
-	display: block;
+.side-bar:hover > .side-bar__arrows > span:nth-child(2) {
+  display:block;
 }
 
 .side-bar__menu {
@@ -338,6 +335,7 @@ body {
 	padding: 20px 0;
 	border-top: 2px solid white;
 	border-bottom: 2px solid white;
+	justify-content:center;
 }
 
 .bottom-bar__site-info {
@@ -371,19 +369,44 @@ body {
 	height: 100%;
 }
 
-.main>.con>.content {
-	margin: 20px 0;
+.main > .con > .content{
   margin:20px 0;
   padding:20px;  
+  padding-bottom:30px;
   background-color:white;
   color:black;
-  border-radius:10px;
+  border-radius:10px;  
+}
+
+.latest-articles{
+  width:100%;
+}
+
+.latest-articles > h2{
+  padding-bottom:10px;
+  border-bottom:3px double;
+}
+
+.latest-articles > div > span{
+  display:inline-block;
+  width:10%;
+  padding:5px 0;
+}
+
+.latest-articles > div > span:nth-child(2){
+  width:30%;
 }
 /* 메인 */
 /* 게시물 리스트 시작 */
 .article-list>ul {
 	padding: 14px 0;
 	border-bottom: 1px solid black;
+}
+
+.article-list>ul:hover{
+  background-color:black;
+  color:white;
+  opacity:0.7;
 }
 
 .article-list>ul>li {
@@ -414,18 +437,19 @@ body {
 	flex-grow: 1;
 }
 
-.article-list>ul:not(:first-child ) >li:nth-of-type(4):hover {
+.article-list>ul:not(:first-child ) >li:nth-of-type(4) > a:hover{
 	text-decoration: underline;
 }
 
 .list-page>ul>li>a {
 	display: block;
 	padding: 10px;
+	margin-bottom:10px;
 	border: 1px solid transparent;
 }
 
 .list-page>ul>li:hover:not(:first-of-type ):not(:last-of-type ) >a {
-	border-color: #afafaf;
+	border-color:#afafaf;
 }
 /* 게시물 리스트 끝 */
 /* 게시물 상세 시작 */
@@ -461,3 +485,41 @@ body {
 	text-decoration: underline;
 }
 /* 게시물 상세 끝 */
+/* 통계 */
+.stat > ul{
+  border-top:1px solid;
+  border-bottom:1px solid;
+  margin:0 20px;
+  margin-top:10px;
+  padding-bottom:15px;
+}
+
+.stat > ul > li:first-of-type{
+  margin:20px 0;
+  font-weight:bold;
+  text-decoration:underline;
+}
+
+.stat > ul > li {
+  display:block;
+  width:100%;
+  justify-content:space-around;
+  font-size:1.1rem;
+  text-align:center;
+}
+
+.stat > ul > li:not(:first-child) > span {
+  display:inline-block;
+  width:30%;
+  text-align:center; 
+  padding:15px 0;
+}
+
+.stat > ul > li:first-child > span{
+  width:100;
+}
+
+.stat > ul > .total {
+  font-weight:bold;
+}
+/* 통계 */

@@ -112,13 +112,35 @@
 	<div class="con">
 		<div class="article-detail flex flex-column">
 			<div class="article-detail__title">
-				<span>공지사항 게시판 첫 글</span>
+				<span>자바#11 자료형 변환</span>
 			</div>
 			<div class="article-detail__sub-info">
-				<span>notice board</span> <span>2020-12-17 13:12:03</span>
+				<span>it board</span> <span>2020-12-23 09:17:53</span>
 				<span>노원하</span>
 			</div>
-			<div class="article-detail__body">공지사항 게시판 첫 내용</div>
+			<div class="article-detail__body"># 자바
+<br>
+## 자료형 변환
+- 같은 값이라도 자료형 별로 bit는 다르게 저장된다
+<br>
+### 예시
+<br>
+```java
+int a = 200;
+float b = 200.0;
+```
+## 결과 
+a bit == 00000000 00000000 00000000 11001000
+b bit == 01000011 01001000 00000000 00000000
+
+## 부연
+- 데이터의 손실이 없다면 자동 형 변환이 일어난다
+- int a = 2; float b = a; .. b == 2;
+- 위의 경우는 정수형 -> 실수형으로 변환하는 과정에서 데이터 손실이 없기 때문에 자동적으로 자료형이 변한다
+- 반대로 float을 int에 대입할 경우 에러가 난다
+- 형 변환 규칙
+- byte -> shot, char -> int -> long -> float -> double
+- 자동 형 변환이 일어나지 않는 경우도 데이터 앞에 (int)를 붙이는 것과 같은 방식으로 명시적 형 변환도 가능하다</div>
 			
 			<div class="article-detail__reply-box">
 			
@@ -134,13 +156,13 @@
 				</div>
 			
 			<div class="article-detail__menu">
-				<a title = ""
-				 href="article_detail_0.html"
-				 class="none">&lt; 이전 글</a> 
-				<a href="article_list_notice_1.html">목록</a>
-				<a title = "" 
-				 href="article_detail_0.html"
-				 class="none">다음 글 &gt;</a>
+				<a title = "자바#12 연산자"
+				 href="article_detail_14.html"
+				 class="">&lt; 이전 글</a> 
+				<a href="article_list_it_1.html">목록</a>
+				<a title = "자바#10 데이터 타입#3" 
+				 href="article_detail_12.html"
+				 class="">다음 글 &gt;</a>
 			</div>
 		</div>
 	</div>
