@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="Java's Meow | 자바#2 변수#2 문자"/>
+<meta property="og:title" content="Java's Meow | article search"/>
 <meta property="og:description" content="자바 비기너 블로그"/>
 <meta property="og:image" content="oa_image.png"/>
 <meta charset="UTF-8">
@@ -86,102 +86,55 @@
 	<div class="title-bar con-min-width">
 		<div class="con">
 			<div class="title-bar__logo flex">
-				<div class=""><i class="fas fa-file-alt"></i> <span>ARTICLE DETAIL</span></div>
+				<div class=""><i class="fas fa-search"></i> <span>SEARCH</span></div>
 				<i class="fas fa-paw"></i>
 			</div>
 		</div>
-	</div><script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
-<!-- 하이라이트 라이브러리 추가, 토스트 UI 에디터에서 사용됨 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css">
-
-<!-- 토스트 UI 에디터, 자바스크립트 코어 -->
+	</div><!-- lodash 불러오기 -->
 <script
-	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
 
-<!-- 코드 미러 라이브러리 추가, 토스트 UI 에디터에서 사용됨 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css" />
-<!-- 토스트 UI 에디터, CSS 코어 -->
-<link rel="stylesheet"
-	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
-	
-<!-- 토스트 UI 에디터, 신택스 하이라이트 플러그인 추가 -->
-<script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.js"></script>
+<!-- vue 불러오기 -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-<div class="main con-min-width">
+<!-- jquery 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="main con-min-width" id="articleSearchList">
 	<div class="con">
-		<div class="article-detail flex flex-column">
-			<div class="article-detail__title">
-				<span>자바#2 변수#2 문자</span>
-			</div>
-			<div class="article-detail__sub-info">
-				<span>it BOARD</span> <span>2020-12-17 16:17:50</span>
-				<span>노원하</span>
-			</div>
-			<div class="article-detail__body"># 자바
-<br>
-## 변수#2 문자
-- 문자형 변수에는 문자(Character)와 문자열(String)이 있다
-- 문자는 한 글자, 스트링은 문자 여럿을 의미한다
-- 문자는 작은 따옴표, 문자열은 큰 따옴표로 감싸야 한다
-- 공백이 포함된다
-<br>
-### 예시
-<br>
-```java
-System.out.printf('쌀');
-System.out.printf("흰 쌀 밥");
-System.out.printf('치킨');
-System.out.printf("맥");
-```
-## 결과
- - 쌀
- - 흰 쌀 밥
- - 에러
- - 맥
-<br>
-## 부연
- - 문자열을 작은 따옴표로 감싸면 에러가 난다
- - 문자를 큰 따옴표로 감싸는 건 에러가 나지 않는다
- - 한 글자도 문자열이 될 수 있다</div>
-			
-			<div class="article-detail__reply-box">
-			
-				<div id="disqus_thread"></div>
-					<script>
-						var disqus_config = function () {
-					        this.page.url = 'https://blog.nwh.kr/article_detail_4.html';
-					        this.page.identifier = 'article_detail_4.html';
-					    };
-					    (function() { // DON'T EDIT BELOW THIS LINE
-					    var d = document, s = d.createElement('script');
-					    s.src = 'https://ssg-blog.disqus.com/embed.js';
-					    s.setAttribute('data-timestamp', +new Date());
-					    (d.head || d.body).appendChild(s);
-					    })();
-					</script>		
-					<noscript>
-					Please enable JavaScript to view the
-					<a href="https://disqus.com/?ref_noscript">comments powered by
-						Disqus.</a>
-					</noscript>	
-				</div>
-			
-			<div class="article-detail__menu">
-				<a title = "자바#3 변수#3 그 외"
-				 href="article_detail_5.html"
-				 class="">&lt; 이전 글</a> 
-				<a href="article_list_it_1.html">목록</a>
-				<a title = "자바#1 변수#1 숫자" 
-				 href="article_detail_3.html"
-				 class="">다음 글 &gt;</a>
-			</div>
+		<div class="article-search">
+          <form>
+            <input :value="searchKeyword" @input="update" type="text" placeholder="검색어">
+          </form>
+        </div>
+		<div class="article-list content">
+			<ul class="flex">
+				<li>번호</li>
+				<li>작성일</li>
+				<li>작성자</li>
+				<li><a>제목</a></li>
+				<li>조회수</li>
+				<li>댓글수</li>
+				<li>추천수</li>
+			</ul>
+			<ul v-for="article in filtered" class="flex">
+				 <li>{{article.id}}</li>
+	             <li>{{article.regDate}}</li>
+	             <li>{{article.writer}}</li>
+	             <li>
+	               <a :href="'article_detail_' + article.id + '.html'" target="_blank">{{article.title}}</a>
+            	 </li>
+            	 <li>{{article.hit}}</li>
+	             <li>{{article.commentsCount}}</li>
+	             <li>{{article.likesCount}}</li>	             
+			</ul>
 		</div>
 	</div>
-</div><!-- 바텀 바 -->
+</div>
+
+<script src="article_search.js">
+</script><!-- 바텀 바 -->
 <div class="bottom-bar con-min-width">
 	<div class="con flex">
 		<div class="bottom-bar__site-info flex">
