@@ -172,7 +172,6 @@ a {
 /* 바디 */
 body {
 	overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .body-content {
@@ -523,6 +522,12 @@ body {
 .article-detail__menu>*:hover {
 	text-decoration: underline;
 }
+
+.article-detail-tag > .tag-box{
+  width:100%;
+  padding-top:10px;
+  padding-left:10px;
+}
 /* 게시물 상세 끝 */
 /* 통계 */
 .stat {
@@ -625,6 +630,20 @@ body {
 .mobile-content{
   flex-grow:1;
 }
+
+/* 임시 */
+.mobile-content > lastest-articles{
+	display:none;	
+}
+
+.mobile-content .intro{
+	height:90%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:6rem;
+}
+/* 임시 */
 
 .content-background{
   background-color:white;
